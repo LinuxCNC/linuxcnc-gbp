@@ -1,3 +1,13 @@
+linuxcnc (2.9.3-2) unstable; urgency=medium
+
+  [ Petter Reinholdtsen ]
+  * Adjusted build dependencies to only require udev on Linux.
+
+  [ Sebastian Kuzminsky ]
+  * Backport gettimeofday fix for sid from 2.9 branch (Closes: #1092538).
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 26 Jan 2025 09:13:18 +0100
+
 linuxcnc (2.9.3-1) unstable; urgency=medium
 
   * New upstream version 2.9.3
