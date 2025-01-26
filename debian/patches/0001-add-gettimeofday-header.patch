@@ -1,6 +1,8 @@
 commit 574f47049e6b657202dc977e3a1c9475d6505496
 Author: Bertho Stultiens <bertho@vagrearg.org>
 Date:   Thu Jan 9 12:07:11 2025 +0100
+Bug-Debian: https://bugs.debian.org/1092538
+Forwarded: not-needed
 
     Necessary include for gettimeofday() in debian:sid.
 
