@@ -119,7 +119,7 @@ usr/share/axis
 usr/share/glade
 usr/share/gmoccapy
 usr/share/gscreen
-usr/share/gtksourceview-2.0
+usr/share/gtksourceview-4
 
 usr/share/applications/linuxcnc.desktop
 usr/share/applications/linuxcnc-latency.desktop
@@ -152,7 +152,7 @@ src/emc/usr_intf/axis/README usr/share/doc/linuxcnc-uspace/axis
 debian/linuxcnc-uspace.metainfo.xml usr/share/metainfo
 
 debian/extras/etc /
-debian/extras/lib /usr
+debian/extras/lib /
 
 debian/extras/usr/share/icons usr/share
 

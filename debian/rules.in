@@ -62,21 +62,10 @@ ifneq "$(enable_build_documentation)" ""
 endif
 
 override_dh_auto_clean:
-	dh_auto_clean
-	py3clean .
-	if [ -r src/Makefile.inc -a -r src/config.status ]; then $(MAKE) -C src clean -s; fi
-	$(RM) Makefile.inc
-	$(RM) src/config.log src/config.status
-	$(RM) $(for i in $(find . -name "*.in"); do basename $i .in; done)
-
-	$(RM) scripts/halcmd_twopass scripts/halrun scripts/haltcl scripts/linuxcnc scripts/linuxcnc-checklink scripts/linuxcnc_info scripts/linuxcnc_var scripts/linuxcncmkdesktop scripts/realtime scripts/rip-environment scripts/runtests src/config.guess src/config.sub src/configure src/install-sh lib/libpyplugin.so docs/src/hal/components_gen.adoc
-
-	$(RM) lib/python/nf.py scripts/rtapi.conf scripts/setup_designer share/applications/linuxcnc-latency-histogram.desktop share/applications/linuxcnc-latency.desktop share/applications/linuxcnc-pncconf.desktop share/applications/linuxcnc-stepconf.desktop share/applications/linuxcnc.desktop share/desktop-directories/linuxcnc-cnc.directory share/desktop-directories/linuxcnc-doc.directory share/desktop-directories/linuxcnc-ref.directory share/menus/CNC.menu src/Makefile.inc src/Makefile.modinc src/config.h src/config.h.in tcl/linuxcnc.tcl
-
-	$(RM) docs/po/cs.po docs/po/da.po
-	$(RM) docs/man/index.db docs/index.html
-	dh_clean
-
+	if [ -r src/Makefile.inc -a -r src/config.status ]; then \
+	dh_auto_clean; \
+	py3clean .; \
+	fi
 
 override_dh_auto_install-arch:
 	# Install all architecture-dependent libraries and executables
@@ -87,7 +76,7 @@ override_dh_auto_install-arch:
 	desktop-file-validate $(shell find debian/extras/ share/applications/ -name *.desktop);
 
 	# some clean-up
-	$(RM) $(DESTDIR)/usr/share/doc/@MAIN_PACKAGE_NAME@/examples/sample-configs/*/*position*.txt
+	rm -f $(DESTDIR)/usr/share/doc/@MAIN_PACKAGE_NAME@/examples/sample-configs/*/*position*.txt
 
 override_dh_installdocs-arch:
 	# Sample configs go in `usr/share/doc/linuxcnc` (not `.../doc/@MAIN_PACKAGE_NAME@`)
@@ -103,7 +92,7 @@ override_dh_installdocs-arch:
 override_dh_auto_install-indep:
 	DESTDIR=$(DESTDIR) $(MAKE) -C src install-docs install-doc
 	# Remove the docs we just built that we don't have debs for yet...
-	$(RM) $(DESTDIR)/usr/share/doc/linuxcnc/*_nb.pdf
+	rm -f $(DESTDIR)/usr/share/doc/linuxcnc/*_nb.pdf
 
 override_dh_installdocs-indep:
 	# The G-code quick reference html docs are built as `docs/html/${LANG}/gcode.html`.

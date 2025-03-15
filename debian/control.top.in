@@ -2,12 +2,7 @@ Source: linuxcnc
 Section: misc
 Priority: optional
 Maintainer: LinuxCNC Developers <emc-developers@lists.sourceforge.net>
-Uploaders:
- Andy Pugh <andy@bodgesoc.org>,
- Jeff Epler <jepler@gmail.com>,
- Petter Reinholdtsen <pere@debian.org>,
- Sebastian Kuzminsky <seb@highlab.com>,
- Steffen Moeller <moeller@debian.org>
+Uploaders: Jeff Epler <jepler@gmail.com>, Sebastian Kuzminsky <seb@highlab.com>
 Build-Depends:
     @DEBHELPER@,
     @PYTHON_PACKAGING_DEPENDS@,
@@ -18,6 +13,7 @@ Build-Depends:
     docbook-xsl,
     asciidoc,
     ghostscript,
+    groff-base,
     imagemagick,
     asciidoc-dblatex,
     autoconf,
@@ -53,10 +49,10 @@ Build-Depends:
     yapps2
 Build-Depends-Indep:
     @DOC_DEPENDS@,
-Standards-Version: 4.7.0
+Standards-Version: 4.6.1
 Homepage: https://linuxcnc.org/
-Vcs-Browser: https://github.com/LinuxCNC/linuxcnc-gbp
-Vcs-Git: https://github.com/LinuxCNC/linuxcnc-gbp.git
+Vcs-Browser: https://github.com/LinuxCNC/linuxcnc
+Vcs-Git: https://github.com/LinuxCNC/linuxcnc.git
 Rules-Requires-Root: binary-targets
 
 Package: @MAIN_PACKAGE_NAME@-dev

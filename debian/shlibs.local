@@ -1,9 +1,0 @@
-liblinuxcnchal 0 linuxcnc-uspace (>= 2.9.3)
-liblinuxcncini 0 linuxcnc-uspace (>= 2.9.3)
-libnml 0 linuxcnc-uspace (>= 2.9.3)
-libposemath 0 linuxcnc-uspace (>= 2.9.3)
-libpyplugin 0 linuxcnc-uspace (>= 2.9.3)
-librs274 0 linuxcnc-uspace (>= 2.9.3)
-libtooldata 0 linuxcnc-uspace (>= 2.9.3)
-libncurses 5 libncurses5 (>= 5.0)
-libpth 20 libpth2 | libpth20

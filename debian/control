@@ -2,19 +2,15 @@ Source: linuxcnc
 Section: misc
 Priority: optional
 Maintainer: LinuxCNC Developers <emc-developers@lists.sourceforge.net>
-Uploaders:
- Andy Pugh <andy@bodgesoc.org>,
- Jeff Epler <jepler@gmail.com>,
- Petter Reinholdtsen <pere@debian.org>,
- Sebastian Kuzminsky <seb@highlab.com>,
- Steffen Moeller <moeller@debian.org>
+Uploaders: Jeff Epler <jepler@gmail.com>, Sebastian Kuzminsky <seb@highlab.com>
 Build-Depends:
     debhelper-compat (= 13),
     dh-python,
-    libudev-dev [linux-any],
+    libudev-dev,
     docbook-xsl,
     asciidoc,
     ghostscript,
+    groff-base,
     imagemagick,
     asciidoc-dblatex,
     autoconf,
@@ -30,7 +26,8 @@ Build-Depends:
     libgtk2.0-dev,
     libgtk-3-dev,
     libmodbus-dev (>= 3.0),
-    libeditreadline-dev | libreadline-dev,
+    libgpiod-dev,
+    libeditreadline-dev,
     libtirpc-dev,
     libusb-1.0-0-dev,
     libxmu-dev,
@@ -45,6 +42,7 @@ Build-Depends:
     tcl8.6-dev,
     tclx,
     tk8.6-dev,
+    xvfb,
     yapps2
 Build-Depends-Indep:
     dblatex (>= 0.2.12),
@@ -68,10 +66,10 @@ Build-Depends-Indep:
     w3c-linkchecker,
     xsltproc,
     texlive-xetex,
-Standards-Version: 4.7.0
+Standards-Version: 4.6.1
 Homepage: https://linuxcnc.org/
-Vcs-Browser: https://github.com/LinuxCNC/linuxcnc-gbp
-Vcs-Git: https://github.com/LinuxCNC/linuxcnc-gbp.git
+Vcs-Browser: https://github.com/LinuxCNC/linuxcnc
+Vcs-Git: https://github.com/LinuxCNC/linuxcnc.git
 Rules-Requires-Root: binary-targets
 
 Package: linuxcnc-uspace-dev
@@ -81,7 +79,7 @@ Depends: ${misc:Depends},
          ${python3:Depends},
          python3-serial,
          linuxcnc-uspace (= ${binary:Version}),
-         udev [linux-any],
+         udev,
          python3-yapps
 Section: devel
 Description: PC based motion controller for real-time Linux
@@ -145,7 +143,7 @@ Depends:
     ${misc:Depends},
     ${python3:Depends},
     ${shlibs:Depends},
-    libudev-dev [linux-any],iptables,
+    libudev-dev,iptables,
     blt,
     mesa-utils,
     python3-tk,
@@ -155,20 +153,12 @@ Depends:
     python3-opengl,
     python3-configobj,
     python3-xlib,
-    libgtksourceview-3.0-dev,
+    libgtksourceview-4-dev,
     tcl8.6,
     tk8.6,
     bwidget (>= 1.7),
     tclreadline,
     tclx,
-    procps, psmisc,
-    udev [linux-any]
-Recommends:
-    linuxcnc-doc-en | linuxcnc-doc,
-    librsvg2-dev,
-    hostmot2-firmware-all, linux-image-rt-amd64 [linux-amd64], linux-image-rt-686-pae [linux-i386],
-    python3-pil,
-    python3-pil.imagetk,
     python3-pyqt5,
     python3-pyqt5.qsci,
     python3-pyqt5.qtsvg,
@@ -177,12 +167,21 @@ Recommends:
     python3-dbus,
     python3-espeak,
     python3-dbus.mainloop.pyqt5,
-    python3-pyqt5.qtwebkit,
+    python3-pyqt5.qtwebengine | python3-pyqt5.qtwebkit,
     espeak-ng,
     pyqt5-dev-tools,
-    gstreamer1.0-tools,espeak,
+    gstreamer1.0-tools,
+    espeak,
     sound-theme-freedesktop,
-    python3-poppler-qt5
+    python3-poppler-qt5,
+    procps, psmisc,
+    udev
+Recommends:
+    linuxcnc-doc-en | linuxcnc-doc,
+    librsvg2-dev,
+    hostmot2-firmware-all, linux-image-rt-amd64 [linux-amd64], linux-image-rt-686-pae [linux-i386],
+    python3-pil,
+    python3-pil.imagetk
 Suggests: mesaflash,
     onboard
 Description: motion controller for CNC machines and robots
