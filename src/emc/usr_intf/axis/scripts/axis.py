@@ -979,7 +979,6 @@ initiated action (whether an MDI command or a jog) is acceptable.
 This means this function returns True when the mdi tab is visible."""
     if do_poll: s.poll()
     if s.task_state != linuxcnc.STATE_ON: return False
-    if running(): return 0
     return s.interp_state == linuxcnc.INTERP_IDLE or (s.task_mode == linuxcnc.MODE_MDI and s.queued_mdi_commands < vars.max_queued_mdi_commands.get())
 
 # If LinuxCNC is not already in one of the modes given, switch it to the
@@ -1915,7 +1914,11 @@ def ja_from_rbutton():
     # radiobuttons for joints set ja_rbutton to numeric value [0,MAX_JOINTS)
     # radiobuttons for axes   set ja_rbutton to one of: xyzabcuvw
     ja = vars.ja_rbutton.get()
-    if not all_homed() and lathe and not lathe_historical_config():
+    jjogmode = get_jog_mode()
+    # "xzabcuvw" remap is only valid for joint jog on a lathe missing the Y
+    # joint. Teleop axis indices are fixed (0=X,1=Y,2=Z,...) so the full
+    # "xyzabcuvw" map must be used there, otherwise Z collides into the Y slot.
+    if jjogmode and not all_homed() and lathe and not lathe_historical_config():
         axes = "xzabcuvw"
     else:
         axes = "xyzabcuvw"
@@ -1929,7 +1932,7 @@ def ja_from_rbutton():
         a = axes.index(ja) # letter specifies an axis coordinate
 
     # handle joint jogging for known identity kins
-    if get_jog_mode():
+    if jjogmode:
         # joint jogging
         if lathe_historical_config():
             a = "xyzabcuvw".index(ja)
@@ -3243,8 +3246,7 @@ jog_after = [None]  * linuxcnc.MAX_JOINTS
 jog_cont  = [False] * linuxcnc.MAX_JOINTS
 jogging   = [0]     * linuxcnc.MAX_JOINTS
 def jog_on(a, b):
-    if not manual_ok(): return
-    if not manual_tab_visible(): return
+    if not manual_ok() or not manual_tab_visible() or running(): return
     if a < 3 or a > 5:
         if vars.metric.get(): b = b / 25.4
         b = from_internal_linear_unit(b)

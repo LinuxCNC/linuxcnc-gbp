@@ -1,3 +1,11 @@
+linuxcnc (1:2.9.9-1) unstable; urgency=medium
+
+  * New upstream version 2.9.9.
+    - Now includes hal_gpio (Closes: #1098844).
+  * Reintroduce gbp.conf to enforce pristine-tar and gbp branches.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 27 Jun 2026 22:15:17 +0200
+
 linuxcnc (1:2.9.7-1) unstable; urgency=low
 
   * [ci] publish releases with artifacts - GitHub now builds release debs
