@@ -1,3 +1,14 @@
+linuxcnc (1:2.9.4-2+deb13u1) trixie; urgency=medium
+
+  * Team upload.
+
+  * Added 0010-sanitize-hal-paths.patch to sanitize name for module in
+    rtapi_app (Closes: #1140943).
+  * Added d/gbp.conf to enforce the use of pristine-tar and using
+    correct git branch for stable updates.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 28 Jun 2026 23:02:42 +0200
+
 linuxcnc (1:2.9.4-2) unstable; urgency=medium
 
   * Team upload.
