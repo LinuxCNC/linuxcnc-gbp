@@ -1,3 +1,15 @@
+linuxcnc (1:2.9.9-2) unstable; urgency=medium
+
+  * Team uplod.
+
+  * Moved python3-poppler-qt5 to suggests as it is not a hard
+    requirement (Closes: #1129683).
+  * Align debian packaging rules closer to the upstream ones.
+  * Updated Standards-Version from 4.7.2 to 4.7.4.
+  * Added myself as uploader for linuxcnc.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 29 Jun 2026 00:04:26 +0200
+
 linuxcnc (1:2.9.9-1) unstable; urgency=medium
 
   * New upstream version 2.9.9.
