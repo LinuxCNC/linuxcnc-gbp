@@ -72,7 +72,7 @@ Build-Depends-Indep:
     w3c-linkchecker,
     xsltproc,
     texlive-xetex,
-Standards-Version: 4.7.2
+Standards-Version: 4.7.4
 Homepage: https://linuxcnc.org/
 Vcs-Browser: https://github.com/LinuxCNC/linuxcnc
 Vcs-Git: https://github.com/LinuxCNC/linuxcnc.git
