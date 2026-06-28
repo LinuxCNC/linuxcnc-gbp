@@ -10,12 +10,12 @@ Build-Depends:
     debhelper-compat (= 13),
     dh-python,
     libudev-dev,
-    docbook-xsl,
+    docbook-xsl <!nodoc>,
     asciidoc,
-    ghostscript,
-    groff-base,
-    imagemagick,
-    asciidoc-dblatex,
+    ghostscript <!nodoc>,
+    groff-base <!nodoc>,
+    imagemagick <!nodoc>,
+    asciidoc-dblatex <!nodoc>,
     autoconf,
     automake,
     bwidget (>= 1.7),
@@ -35,7 +35,8 @@ Build-Depends:
     libusb-1.0-0-dev,
     libxmu-dev,
     netcat-traditional | netcat-openbsd | netcat,
-    po4a,
+    netpbm,
+    po4a <!nodoc>,
     procps,
     psmisc,
     python3,
@@ -46,6 +47,7 @@ Build-Depends:
     tcl8.6-dev,
     tclx,
     tk8.6-dev,
+    x11-xserver-utils <!nocheck>,
     xvfb,
     yapps2
 Build-Depends-Indep:
@@ -79,12 +81,13 @@ Rules-Requires-Root: binary-targets
 Package: linuxcnc-uspace-dev
 Architecture: any
 Conflicts: linuxcnc-sim-dev, linuxcnc-dev
-Depends: ${misc:Depends},
-         ${python3:Depends},
-         python3-serial,
-         linuxcnc-uspace (= ${binary:Version}),
-         udev,
-         python3-yapps
+Depends:
+    ${misc:Depends},
+    ${python3:Depends},
+    python3-serial,
+    linuxcnc-uspace (= ${binary:Version}),
+    udev,
+    python3-yapps
 Section: devel
 Description: PC based motion controller for real-time Linux
  LinuxCNC is a fully-realised CNC machine controller that can interpret
@@ -182,6 +185,7 @@ Depends:
 Recommends:
     linuxcnc-doc-en | linuxcnc-doc,
     librsvg2-dev,
+    x11-xserver-utils,
     hostmot2-firmware-all, linux-image-rt-amd64 [linux-amd64], linux-image-rt-686-pae [linux-i386],
     python3-pil,
     python3-pil.imagetk
