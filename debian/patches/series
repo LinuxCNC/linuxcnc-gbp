@@ -1,3 +1,4 @@
 #0010-arm-hppa.patch
 0010-sanitize-hal-paths.patch
 0020-mdi-fix-unwanted-movement.patch
+1000-gettimeofday-include.patch

@@ -1,0 +1,19 @@
+Description: Add missing include for gettimeofday()
+ This get the source building with more recent gcc/glibc too
+From: Petter Reinholdtsen <pere@debian.org>
+Reviewed-by: Petter Reinholdtsen <pere@debian.org>
+Forwarded: not-needed
+Last-Update: 2026-06-28
+
+diff --git a/src/emc/rs274ngc/gcodemodule.cc b/src/emc/rs274ngc/gcodemodule.cc
+index ff222e7..88b08b7 100644
+--- a/src/emc/rs274ngc/gcodemodule.cc
++++ b/src/emc/rs274ngc/gcodemodule.cc
+@@ -16,6 +16,7 @@
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
++#include <sys/time.h>
+ #include <Python.h>
+ #include <structmember.h>
+ 
