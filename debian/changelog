@@ -1,3 +1,16 @@
+linuxcnc (2.9.0~pre1+git20230208.f1270d6ed7-1+deb12u2) bookworm; urgency=medium
+
+  * Team upload.
+
+  * Told gbp to use xz compression, to match already uploaded
+    orig.tar.gz.
+  * Added 0010-sanitize-hal-paths.patch to sanitize name for module in
+    rtapi_app (Closes: #1140943).
+  * Added a small patch to fix missing gettimeofday() declaration with
+    newer GCC/glibc version.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 28 Jun 2026 23:34:48 +0200
+
 linuxcnc (2.9.0~pre1+git20230208.f1270d6ed7-1+deb12u1) bookworm; urgency=medium
 
   [ CMorley ]
