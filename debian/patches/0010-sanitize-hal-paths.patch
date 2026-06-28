@@ -1,0 +1,23 @@
+Description: Fix rtapi_app: Sanitize name for module
+From: Hannes Diethelm <hannes.diethelm@gmail.com>
+Origin: https://github.com/LinuxCNC/linuxcnc/commit/00d534c87464a3ed446656998aa02b8abc74b391
+Reviewed-by: Petter Reinholdtsen <pere@debian.org>
+Forwarded: not-needed
+Last-Update: 2026-06-28
+
+diff --git a/src/rtapi/uspace_rtapi_app.cc b/src/rtapi/uspace_rtapi_app.cc
+index 6e6298831b..8e600cc4b7 100644
+--- a/src/rtapi/uspace_rtapi_app.cc
++++ b/src/rtapi/uspace_rtapi_app.cc
+@@ -274,6 +274,11 @@ static int do_comp_args(void *module, vector<string> args) {
+ static int do_load_cmd(string name, vector<string> args) {
+     void *w = modules[name];
+     if(w == NULL) {
++        //Sanitize the name
++        if(name.find("/") != std::string::npos || name.find("..") != std::string::npos){
++            rtapi_print_msg(RTAPI_MSG_ERR, "%s: Not allowed as module name. Slashes or with \"..\" (even /a..b/) are not allowed.\n", name.c_str());
++            return -1;
++        }
+         char what[LINELEN+1];
+         snprintf(what, LINELEN, "%s/%s.so", EMC2_RTLIB_DIR, name.c_str());
+         void *module = modules[name] = dlopen(what, RTLD_GLOBAL | RTLD_NOW);
