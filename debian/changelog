@@ -3,7 +3,7 @@ linuxcnc (1:2.9.4-2+deb13u1) trixie; urgency=medium
   * Team upload.
 
   * Added 0010-sanitize-hal-paths.patch to sanitize name for module in
-    rtapi_app (Closes: #1140943).
+    rtapi_app (Closes: #1140943). CVE-2026-58302
   * Added d/gbp.conf to enforce the use of pristine-tar and using
     correct git branch for stable updates.
 
